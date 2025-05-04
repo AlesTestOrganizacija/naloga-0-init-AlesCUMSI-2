@@ -25,7 +25,7 @@ jobs:
 
       - name: Pretvori notebook v Python datoteko
         run: |
-          jupyter nbconvert --to python notebook.ipynb --output=code.py
+          jupyter nbconvert --to python notebook.ipynb --output=student_code.py
 
       - name: Prenesi skrite teste
         run: |
@@ -34,6 +34,7 @@ jobs:
       - name: Zazeni vse teste
         run: |
           pytest tests.py --disable-warnings -v
+        continue-on-error: true
 
       - name: Nalozi rezultate (grade_summary.json)
         uses: actions/upload-artifact@v4
